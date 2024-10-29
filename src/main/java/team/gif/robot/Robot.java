@@ -4,6 +4,7 @@
 
 package team.gif.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -42,6 +43,9 @@ public class Robot extends TimedRobot {
     oi = new OI();
     uiSmartDashboard = new UiSmartDashboard();
 
+    //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
+    //if connected to CAN:
+    pigeon = new Pigeon(RobotMap.PIGEON_ID);
   }
 
   /**
@@ -60,7 +64,8 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     uiSmartDashboard.updateUI();
-
+    //display pigeon heading every cycle as a number
+    System.out.println("Pigeon Heading:" + pigeon.getCompassHeading());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
