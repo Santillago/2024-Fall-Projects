@@ -13,6 +13,5 @@ package team.gif.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static double FORWARD_SPEED = .2;
-    public static double REVERSE_SPEED = .2;
+    public static double TALONSRX_SPEED_PERCENT = .2;
 }

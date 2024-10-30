@@ -19,7 +19,7 @@ public class TalonSRXMotorControlSubsystem extends SubsystemBase {
     motor.setNeutralMode(NeutralMode.Brake);
   }
 
-  public static void Speed(Double percentOutput){
+  public static void speed(Double percentOutput){
     motor.set(TalonSRXControlMode.PercentOutput, percentOutput);
   }
 
