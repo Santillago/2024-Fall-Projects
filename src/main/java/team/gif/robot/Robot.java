@@ -12,6 +12,7 @@ import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
+import team.gif.robot.subsystems.LimitSwitchSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -32,6 +33,8 @@ public class Robot extends TimedRobot {
 
   public static final boolean enableSwerveDebug = false;
 
+  public static LimitSwitchSubsystem limitSwitchState;
+
   public static TalonSRXMotorControlSubsystem talonSRXMotorControl;
 
   /**
@@ -47,6 +50,7 @@ public class Robot extends TimedRobot {
     uiSmartDashboard = new UiSmartDashboard();
     talonSRXMotorControl = new TalonSRXMotorControlSubsystem();
     oi = new OI();
+    limitSwitchState = new LimitSwitchSubsystem();
 
     //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
     //if connected to CAN:
@@ -69,6 +73,9 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     uiSmartDashboard.updateUI();
+
+    //Call the new limit switch method and log to the driver station console
+    System.out.println("Limit Switch" + limitSwitchState.limitSwitchState());
     //display pigeon heading every cycle as a number
     System.out.println("Pigeon Heading:" + pigeon.getCompassHeading());
   }
