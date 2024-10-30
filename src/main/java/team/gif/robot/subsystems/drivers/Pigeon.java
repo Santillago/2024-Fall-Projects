@@ -6,6 +6,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import team.gif.robot.RobotMap;
 
 public class Pigeon {
 
@@ -15,8 +16,8 @@ public class Pigeon {
 
     private double pitchOffset = 0;
 
-    public Pigeon(int PigeonID) {
-        _pigeon = new PigeonIMU(PigeonID);
+    public Pigeon(int pigeonId) {
+        _pigeon = new PigeonIMU(pigeonId);
     }
 
     public Pigeon(TalonSRX talon) {
