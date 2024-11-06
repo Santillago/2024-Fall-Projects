@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
+import team.gif.robot.commands.JoystickControl;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.LimitSwitchSubsystem;
@@ -25,7 +26,6 @@ public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
   private static TelemetryFileLogger telemetryLogger;
   public static EventFileLogger eventLogger;
-  public static OI oi;
 
   public static Pigeon pigeon;
 
@@ -36,6 +36,8 @@ public class Robot extends TimedRobot {
   public static LimitSwitchSubsystem limitSwitchState;
 
   public static TalonSRXMotorControlSubsystem talonSRXMotorControl;
+
+  public static OI oi;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -48,13 +50,15 @@ public class Robot extends TimedRobot {
     robotContainer = new RobotContainer();
 
     uiSmartDashboard = new UiSmartDashboard();
+
     talonSRXMotorControl = new TalonSRXMotorControlSubsystem();
-    oi = new OI();
+    talonSRXMotorControl.setDefaultCommand(new JoystickControl());
+
     limitSwitchState = new LimitSwitchSubsystem();
 
-    //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
-    //if connected to CAN:
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
+
+    oi = new OI();
   }
 
   /**
