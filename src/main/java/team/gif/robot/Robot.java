@@ -52,13 +52,12 @@ public class Robot extends TimedRobot {
 
     uiSmartDashboard = new UiSmartDashboard();
     talonSRXMotorControl = new TalonSRXMotorControlSubsystem();
-    oi = new OI();
     limitSwitchState = new LimitSwitchSubsystem();
     sparkMAXControl = new SparkMAXControlSubsystem();
-
     //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
     //if connected to CAN:
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
+    oi = new OI();
   }
 
   /**
