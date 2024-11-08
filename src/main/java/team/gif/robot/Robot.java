@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
 import team.gif.robot.commands.JoystickControl;
+import team.gif.robot.subsystems.SparkMAXControlSubsystem;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.LimitSwitchSubsystem;
@@ -36,6 +37,8 @@ public class Robot extends TimedRobot {
 
   public static TalonSRXMotorControlSubsystem talonSRXMotorControl;
 
+  public static SparkMAXControlSubsystem sparkMAXControl;
+
   public static UI ui;
 
   public static OI oi;
@@ -56,6 +59,9 @@ public class Robot extends TimedRobot {
     talonSRXMotorControl.setDefaultCommand(new JoystickControl());
 
     limitSwitchState = new LimitSwitchSubsystem();
+    sparkMAXControl = new SparkMAXControlSubsystem();
+    //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
+    //if connected to CAN:
 
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
 
