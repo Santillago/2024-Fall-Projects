@@ -16,7 +16,7 @@ public class LimitSwitchSubsystem extends SubsystemBase {
         limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_ID);
     }
 
-    public boolean limitSwitchState() {
+    public boolean getLimitSwitchState() {
         return limitSwitch.get();
     }
 }

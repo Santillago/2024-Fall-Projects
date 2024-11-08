@@ -4,12 +4,12 @@
 
 package team.gif.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
+import team.gif.robot.commands.JoystickControl;
 import team.gif.robot.subsystems.SparkMAXControlSubsystem;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
@@ -26,7 +26,6 @@ public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
   private static TelemetryFileLogger telemetryLogger;
   public static EventFileLogger eventLogger;
-  public static OI oi;
 
   public static Pigeon pigeon;
 
@@ -40,6 +39,10 @@ public class Robot extends TimedRobot {
 
   public static SparkMAXControlSubsystem sparkMAXControl;
 
+  public static UI ui;
+
+  public static OI oi;
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -51,12 +54,19 @@ public class Robot extends TimedRobot {
     robotContainer = new RobotContainer();
 
     uiSmartDashboard = new UiSmartDashboard();
+
     talonSRXMotorControl = new TalonSRXMotorControlSubsystem();
+    talonSRXMotorControl.setDefaultCommand(new JoystickControl());
+
     limitSwitchState = new LimitSwitchSubsystem();
     sparkMAXControl = new SparkMAXControlSubsystem();
     //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
     //if connected to CAN:
+
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
+
+    ui = new UI();
+
     oi = new OI();
   }
 
@@ -77,8 +87,8 @@ public class Robot extends TimedRobot {
 
     uiSmartDashboard.updateUI();
 
-    //Call the new limit switch method and log to the driver station console
-    System.out.println("Limit Switch" + limitSwitchState.limitSwitchState());
+    //Call the new limit switch method and log to the driver station console (methods)
+    System.out.println("Limit Switch" + limitSwitchState.getLimitSwitchState());
     //display pigeon heading every cycle as a number
     System.out.println("Pigeon Heading:" + pigeon.getCompassHeading());
   }

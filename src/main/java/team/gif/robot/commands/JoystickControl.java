@@ -1,12 +1,11 @@
 package team.gif.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import team.gif.robot.Constants;
 import team.gif.robot.Robot;
 
-public class TalonSRXReverse extends Command {
+public class JoystickControl extends Command {
 
-    public TalonSRXReverse() {
+    public JoystickControl() {
         super();
         addRequirements(Robot.talonSRXMotorControl);
     }
@@ -18,7 +17,10 @@ public class TalonSRXReverse extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.talonSRXMotorControl.setSpeedPercent(-Constants.TALONSRX_SPEED_PERCENT);
+        double cimPower = -Robot.oi.driver.getLeftY(); //+/- 100%
+
+        Robot.talonSRXMotorControl.setSpeedPercent(cimPower);
+
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
@@ -29,7 +31,5 @@ public class TalonSRXReverse extends Command {
 
     // Called when the command ends or is interrupted.
     @Override
-    public void end(boolean interrupted) {
-        Robot.talonSRXMotorControl.setSpeedPercent(0.0);
-    }
+    public void end(boolean interrupted) {}
 }
