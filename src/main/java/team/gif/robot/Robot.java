@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
+import team.gif.robot.subsystems.SparkMAXControlSubsystem;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.LimitSwitchSubsystem;
@@ -37,6 +38,8 @@ public class Robot extends TimedRobot {
 
   public static TalonSRXMotorControlSubsystem talonSRXMotorControl;
 
+  public static SparkMAXControlSubsystem sparkMAXControl;
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -49,12 +52,12 @@ public class Robot extends TimedRobot {
 
     uiSmartDashboard = new UiSmartDashboard();
     talonSRXMotorControl = new TalonSRXMotorControlSubsystem();
-    oi = new OI();
     limitSwitchState = new LimitSwitchSubsystem();
-
+    sparkMAXControl = new SparkMAXControlSubsystem();
     //if connected to TalonSRX: pigeon = new Pigeon(new TalonSRX(RobotMap.PIGEON_ID));
     //if connected to CAN:
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
+    oi = new OI();
   }
 
   /**
