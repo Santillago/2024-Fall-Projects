@@ -18,5 +18,7 @@ public class UI {
     public UI() {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB");
 
+        shuffleboardTab.addBoolean("Limit Switch", Robot.limitSwitchState::getLimitSwitchState);
+
     }
 }

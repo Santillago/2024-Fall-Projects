@@ -18,7 +18,7 @@ public class TalonSRXReverse extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.talonSRXMotorControl.speed(-Constants.TALONSRX_SPEED_PERCENT);
+        Robot.talonSRXMotorControl.setSpeedPercent(-Constants.TALONSRX_SPEED_PERCENT);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
@@ -30,6 +30,6 @@ public class TalonSRXReverse extends Command {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        Robot.talonSRXMotorControl.speed(0.0);
+        Robot.talonSRXMotorControl.setSpeedPercent(0.0);
     }
 }

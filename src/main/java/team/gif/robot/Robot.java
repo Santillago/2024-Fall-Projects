@@ -4,7 +4,6 @@
 
 package team.gif.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -37,6 +36,8 @@ public class Robot extends TimedRobot {
 
   public static TalonSRXMotorControlSubsystem talonSRXMotorControl;
 
+  public static UI ui;
+
   public static OI oi;
 
   /**
@@ -58,6 +59,8 @@ public class Robot extends TimedRobot {
 
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
 
+    ui = new UI();
+
     oi = new OI();
   }
 
@@ -78,8 +81,8 @@ public class Robot extends TimedRobot {
 
     uiSmartDashboard.updateUI();
 
-    //Call the new limit switch method and log to the driver station console
-    System.out.println("Limit Switch" + limitSwitchState.limitSwitchState());
+    //Call the new limit switch method and log to the driver station console (methods)
+    System.out.println("Limit Switch" + limitSwitchState.getLimitSwitchState());
     //display pigeon heading every cycle as a number
     System.out.println("Pigeon Heading:" + pigeon.getCompassHeading());
   }

@@ -17,9 +17,10 @@ public class JoystickControl extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        double forwardBackwardPercent = -Robot.oi.driver.getLeftY();
-        Robot.talonSRXMotorControl.speed(forwardBackwardPercent);
-        //+/- 100%
+        double cimPower = -Robot.oi.driver.getLeftY(); //+/- 100%
+
+        Robot.talonSRXMotorControl.setSpeedPercent(cimPower);
+
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
