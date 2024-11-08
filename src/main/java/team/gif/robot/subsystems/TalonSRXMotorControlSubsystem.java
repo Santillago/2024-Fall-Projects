@@ -11,16 +11,16 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import team.gif.robot.RobotMap;
 
 public class TalonSRXMotorControlSubsystem extends SubsystemBase {
-  private static TalonSRX cim_motor;
+  private static TalonSRX cimmotor;
 
   public TalonSRXMotorControlSubsystem() {
-    cim_motor = new TalonSRX(RobotMap.CIM_MOTOR_ID);
-    cim_motor.configFactoryDefault();
-    cim_motor.setNeutralMode(NeutralMode.Brake);
+    cimmotor = new TalonSRX(RobotMap.CIM_MOTOR_ID);
+    cimmotor.configFactoryDefault();
+    cimmotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public static void speed(Double percentOutput){
-    cim_motor.set(TalonSRXControlMode.PercentOutput, percentOutput);
+    cimmotor.set(TalonSRXControlMode.PercentOutput, percentOutput);
   }
 
 }
