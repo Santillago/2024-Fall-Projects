@@ -16,9 +16,11 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
 public class UI {
     public UI() {
-        ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB");
+        ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB"); //tab name is BAB
 
         shuffleboardTab.addBoolean("Limit Switch", Robot.limitSwitchState::getLimitSwitchState);
+
+        Robot.pigeon.addToShuffleboard("BAB", "Compass");
 
     }
 }
