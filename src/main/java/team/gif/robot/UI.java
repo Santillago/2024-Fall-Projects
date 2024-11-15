@@ -13,6 +13,7 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import team.gif.robot.subsystems.SparkMAXControlSubsystem;
 
 public class UI {
     public UI() {
@@ -22,5 +23,6 @@ public class UI {
 
         Robot.pigeon.addToShuffleboard("BAB", "Compass");
 
+        shuffleboardTab.addDouble("Actual NEO RPM", Robot.sparkMAXControl::getSpeedinRPM);
     }
 }
