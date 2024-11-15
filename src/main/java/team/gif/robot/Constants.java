@@ -15,4 +15,5 @@ package team.gif.robot;
 public final class Constants {
     public static double TALONSRX_SPEED_PERCENT = .2;
     public static double SPARK_MAX_VOLTAGE = 2.5;
+    public static double SPARK_MAX_RPM = 60;
 }

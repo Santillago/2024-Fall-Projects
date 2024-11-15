@@ -2,6 +2,7 @@ package team.gif.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import team.gif.robot.commands.NEORPM;
 import team.gif.robot.commands.SparkMAXVoltageControl;
 import team.gif.robot.commands.TalonSRXForward;
 import team.gif.robot.commands.TalonSRXReverse;
@@ -92,6 +93,7 @@ public class OI {
         dX.whileTrue(new TalonSRXForward());
         dB.whileTrue(new TalonSRXReverse());
         dY.whileTrue(new SparkMAXVoltageControl());
+        dA.whileTrue(new NEORPM());
 
 
     }
