@@ -11,15 +11,20 @@ public class PneumaticSubsystem extends SubsystemBase {
   private DoubleSolenoid doubleSolenoid; // rm
 
   public PneumaticSubsystem() {
-    doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.REVPH,1,2); //dont know if revph or CAN id is correct
+    doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM,0,1);
 
-    doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+    //doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     //since a double solenoid defaults to kOff, it has to be set before it is toggled
+    //I don't think I have to include this anymore considering that I'm not using the toggle method anymore
   }
 
-  public void toggleSolenoid(){
-    doubleSolenoid.toggle();
+  public void toggleSolenoidForward(){
+    doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void toggleSolenoidReverse(){
+    doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
 
 }

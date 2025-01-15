@@ -2,9 +2,9 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import team.gif.robot.Robot;
 
-public class SolenoidToggle extends Command {
+public class SolenoidToggleReverse extends Command {
 
-    public SolenoidToggle() {
+    public SolenoidToggleReverse() {
         super();
         addRequirements(Robot.pneumatics);
     }
@@ -12,7 +12,7 @@ public class SolenoidToggle extends Command {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        Robot.pneumatics.toggleSolenoid();
+        Robot.pneumatics.toggleSolenoidReverse();
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
