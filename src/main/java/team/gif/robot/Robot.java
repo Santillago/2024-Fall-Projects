@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
 import team.gif.robot.commands.JoystickControl;
+import team.gif.robot.subsystems.PneumaticSubsystem;
 import team.gif.robot.subsystems.SparkMAXControlSubsystem;
 import team.gif.robot.subsystems.TalonSRXMotorControlSubsystem;
 import team.gif.robot.subsystems.drivers.Pigeon;
@@ -41,6 +42,8 @@ public class Robot extends TimedRobot {
 
   public static UI ui;
 
+  public static PneumaticSubsystem pneumatics;
+
   public static OI oi;
 
   /**
@@ -66,6 +69,8 @@ public class Robot extends TimedRobot {
     pigeon = new Pigeon(RobotMap.PIGEON_ID);
 
     ui = new UI();
+
+    pneumatics = new PneumaticSubsystem();
 
     oi = new OI();
   }
