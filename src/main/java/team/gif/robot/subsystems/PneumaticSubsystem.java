@@ -12,6 +12,7 @@ public class PneumaticSubsystem extends SubsystemBase {
 
   public PneumaticSubsystem() {
     doubleSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM,0,1);
+    //channels might be wrong
 
     //doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
